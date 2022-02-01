@@ -10,6 +10,8 @@ const typeDefs = gql`
 
   type Query {
     employee: [Employee!]!
+    employeeById(id: ID!): [Employee]
+    employeeByName(name: String): [Employee]
     message: String!
   }
 `;
