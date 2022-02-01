@@ -12,6 +12,7 @@ const typeDefs = gql`
     employee: [Employee!]!
     employeeById(id: ID!): [Employee]
     employeeByName(name: String): [Employee]
+    getFullName(name: String): String
     message: String!
   }
 `;
