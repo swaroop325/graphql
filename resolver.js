@@ -1,5 +1,5 @@
-const { welcomeMessage, empData } = require("./emp.data");
-const { compData } = require("./comp.data");
+const { welcomeMessage, empData } = require("./data/emp.data");
+const { getCompanyById } = require("./data/company.get");
 
 const resolver = {
   Query: {
@@ -21,8 +21,7 @@ const resolver = {
     fullName: (parent, args, context, info) => {
       return parent.firstName + " " + parent.lastName;
     },
-    company: (parent, args, context, info) =>
-      compData.find((item) => parent.companyId === item.id),
+    company: (parent, args, context, info) => getCompanyById(parent.companyId),
   },
 
   Company: {
