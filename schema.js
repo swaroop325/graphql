@@ -25,6 +25,10 @@ const typeDefs = gql`
     description: String
     employee: [Employee]
   }
+
+  type Mutation {
+    updateMessage(msg: String!): String!
+  }
 `;
 
 module.exports = typeDefs;

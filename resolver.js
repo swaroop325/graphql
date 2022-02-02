@@ -28,6 +28,12 @@ const resolver = {
     employee: (parent, args, context, info) =>
       empData.filter((item) => parent.id === item.companyId),
   },
+
+  Mutation: {
+    updateMessage: (parent, args, context, info) => {
+      return "Mutation done successfully " + args.msg;
+    },
+  },
 };
 
 module.exports = resolver;
