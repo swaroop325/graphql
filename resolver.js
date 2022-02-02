@@ -1,5 +1,6 @@
 const { welcomeMessage, empData } = require("./data/emp.data");
 const { getCompanyById } = require("./data/company.get");
+const { setDB, getEmployeeList } = require("./db/employee");
 
 const resolver = {
   Query: {
@@ -15,6 +16,8 @@ const resolver = {
       return employee.firstName + " " + employee.lastName;
     },
     message: () => welcomeMessage,
+    setupDB: () => setDB(),
+    fetchAll: () => getEmployeeList(),
   },
   // Nested query
   Employee: {

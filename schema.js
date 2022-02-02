@@ -8,6 +8,8 @@ const typeDefs = gql`
     getFullName(name: String): String
     message: String!
     companies: [Company]
+    setupDB: String
+    fetchAll: [Employee]
   }
 
   type Employee {
