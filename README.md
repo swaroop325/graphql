@@ -1,3 +1,3 @@
-# graphql
+# Introduction to GraphQL
 
 practice graphql
