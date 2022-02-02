@@ -1,5 +1,5 @@
 const { welcomeMessage, empData } = require("./data/emp.data");
-const { getCompanyById } = require("./data/company.get");
+const { getCompanyById, getCompany } = require("./data/company.get");
 const { setDB, getEmployeeList } = require("./db/employee");
 
 const resolver = {
@@ -15,6 +15,7 @@ const resolver = {
       );
       return employee.firstName + " " + employee.lastName;
     },
+    getCompany: (parent, args, context, info) => getCompany(args),
     message: () => welcomeMessage,
     setupDB: () => setDB(),
     fetchAll: () => getEmployeeList(),

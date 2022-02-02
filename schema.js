@@ -3,6 +3,7 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
   type Query {
     employee: [Employee]
+    getCompany(offset: Int, limit: Int): [Company]
     employeeById(id: ID!): Employee
     employeeByName(name: String): Employee
     getFullName(name: String): String
