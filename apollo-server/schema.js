@@ -32,6 +32,12 @@ const typeDefs = gql`
 
   type Mutation {
     updateMessage(msg: String!): String!
+    addEmployee(
+      id: String!
+      firstName: String!
+      lastName: String!
+      joblevel: Int!
+    ): [Employee]
   }
 `;
 

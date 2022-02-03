@@ -1,5 +1,12 @@
-import { gql, NetworkStatus, useLazyQuery, useQuery } from "@apollo/client";
+import {
+  gql,
+  NetworkStatus,
+  useLazyQuery,
+  useMutation,
+  useQuery,
+} from "@apollo/client";
 import React, { useEffect, useState } from "react";
+import AddEmployee from "./AddEmployee";
 import EmpCard from "./EmpCard";
 import EmployeeDetails from "./EmployeeDetails";
 
@@ -18,7 +25,7 @@ export default function Employees() {
   const [selected, setSelected] = useState("");
   const [getEmp, { loading, error, data, refetch, networkStatus }] =
     useLazyQuery(GET_EMPLOYEES, {
-      pollInterval: 0,
+      pollInterval: 2000,
       notifyOnNetworkStatusChange: true,
     });
 
@@ -52,6 +59,7 @@ export default function Employees() {
       <button className="btn btn-outline-success m-2" onClick={() => getEmp()}>
         Refetch
       </button>
+      <AddEmployee />
       <hr />
       {selected && <EmployeeDetails empId={selected} />}
     </>

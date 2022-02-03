@@ -38,6 +38,12 @@ const resolver = {
     updateMessage: (parent, args, context, info) => {
       return "Mutation done successfully " + args.msg;
     },
+    addEmployee: (parent, args, context, info) => {
+      if (!empData.find((i) => i.id == args.id)) {
+        empData.push(args);
+      }
+      return empData;
+    },
   },
 };
 
