@@ -27,6 +27,7 @@ export default function Employees() {
     useLazyQuery(GET_EMPLOYEES, {
       pollInterval: 2000,
       notifyOnNetworkStatusChange: true,
+      errorPolicy: "ignore",
     });
 
   useEffect(() => {
