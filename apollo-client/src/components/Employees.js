@@ -1,5 +1,5 @@
-import { gql, NetworkStatus, useQuery } from "@apollo/client";
-import React, { useState } from "react";
+import { gql, NetworkStatus, useLazyQuery, useQuery } from "@apollo/client";
+import React, { useEffect, useState } from "react";
 import EmpCard from "./EmpCard";
 import EmployeeDetails from "./EmployeeDetails";
 
@@ -16,13 +16,16 @@ const GET_EMPLOYEES = gql`
 
 export default function Employees() {
   const [selected, setSelected] = useState("");
-  const { loading, error, data, refetch, networkStatus } = useQuery(
-    GET_EMPLOYEES,
-    {
+  const [getEmp, { loading, error, data, refetch, networkStatus }] =
+    useLazyQuery(GET_EMPLOYEES, {
       pollInterval: 0,
       notifyOnNetworkStatusChange: true,
-    }
-  );
+    });
+
+  useEffect(() => {
+    getEmp();
+  }, []);
+
   console.log(data);
   console.log("networkStatus : " + networkStatus);
   if (networkStatus === NetworkStatus.refetch) {
@@ -46,7 +49,7 @@ export default function Employees() {
             />
           ))}
       </div>
-      <button className="btn btn-outline-success m-2" onClick={() => refetch()}>
+      <button className="btn btn-outline-success m-2" onClick={() => getEmp()}>
         Refetch
       </button>
       <hr />
