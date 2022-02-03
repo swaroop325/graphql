@@ -11,6 +11,7 @@ const typeDefs = gql`
     companies: [Company]
     setupDB: String
     fetchAll: [Employee]
+    getRandom: Int
   }
 
   type Employee {

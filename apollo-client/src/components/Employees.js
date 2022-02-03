@@ -10,13 +10,16 @@ const GET_EMPLOYEES = gql`
       id
       joblevel
     }
+    getRandom
   }
 `;
 
 export default function Employees() {
   const [selected, setSelected] = useState("");
-  const { loading, error, data } = useQuery(GET_EMPLOYEES);
-  console.table(data);
+  const { loading, error, data } = useQuery(GET_EMPLOYEES, {
+    pollInterval: 500,
+  });
+  console.log(data);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error...</p>;
 

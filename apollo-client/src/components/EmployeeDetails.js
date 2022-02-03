@@ -15,7 +15,8 @@ export default function EmployeeDetails({ empId }) {
   const { loading, error, data } = useQuery(GET_MSG, {
     variables: { empId },
   });
-  console.table(data);
+  console.log(data);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error...</p>;
   const employee = data && !loading && !error && data.employeeById;

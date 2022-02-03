@@ -19,6 +19,7 @@ const resolver = {
     message: () => welcomeMessage,
     setupDB: () => setDB(),
     fetchAll: () => getEmployeeList(),
+    getRandom: () => Math.round(Math.random()),
   },
   // Nested query
   Employee: {
